@@ -1,6 +1,7 @@
 #!/usr/bin/python
 
 import xml.sax
+import sys 
 
 class MovieHandler( xml.sax.ContentHandler ):
    def __init__(self):
@@ -64,4 +65,5 @@ if ( __name__ == "__main__"):
    Handler = MovieHandler()
    parser.setContentHandler( Handler )
    
-   parser.parse(r'C:\Users\Chase\Desktop\Python Farnell Stock Check\farnell.xml')
+   path = sys.path[0] + "\farnell.xml"  #create file path from location this program is in
+   parser.parse(path)
