@@ -2,6 +2,7 @@ import requests
 import json
 import urllib
 import httplib2
+import logging
 
 class part:
   part_number = 0
@@ -13,15 +14,28 @@ class part:
 
 def get_mouser_data(part_number):
 
-    my_url = 'https://api.mouser.com/api/v1.0/search/'
-    my_url += part_number
-    my_url += '?apiKey=e14b0550-62b2-4a23-8d54-04a3c58a960b'
+
+
+    
+   # my_url = 'https://api.mouser.com/api/v1.0/search/'
+   # my_url += "partnumber"
+   # my_url += '?apiKey=e14b0550-62b2-4a23-8d54-04a3c58a960b'
+    my_url = "https://api.mouser.com/api/v1.0/search/partnumber?apiKey=e14b0550-62b2-4a23-8d54-04a3c58a960b"
 
     #print(url)
-    inputs = ": {    \"mouserPartNumber\": \"80-CKC18C103JDGCAUTO\",    \"partSearchOptions\": \"5\"  }}"
-    headers =  {"accept": "application/json","Content-Type":"text/json"}
+
+    my_headers =  {"accept": "application/json","Content-Type":"application/json"}
     #response = requests.post(url, json=inputs)
-    response = requests.post(url = my_url, data=inputs, headers=headers, timeout=2.50)
+  
+    my_data =  {
+    "SearchByPartRequest": {
+    "mouserPartNumber": "490-PDSE2-S24-S12MTR",
+    "partSearchOptions": "1"
+  }
+}
+                
+            
+    response = requests.post(url = my_url, headers=my_headers, json=my_data)
  #   response = requests.get(url)   #get the data from the web
  #   data = json.loads(response.text)                                       #load it into a variable
     print(response.json())
@@ -50,8 +64,8 @@ def get_farnell_data(part_number):
 
 
 
-part_info = part()  #init the class
-get_farnell_data("2895628")
-print(part_info.details)
-print(part_info.stock_level)
-#get_mouser_data("80-CKC18C103JDGCAUTO")
+#part_info = part()  #init the class
+#get_farnell_data("2895628")
+#print(part_info.details)
+#print(part_info.stock_level)
+get_mouser_data("490-PDSE2-S24-S12MTR")
