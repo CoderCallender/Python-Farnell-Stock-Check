@@ -63,20 +63,19 @@ if ( __name__ == "__main__"):
    parser.setContentHandler( Handler )
    
    
- #  response = requests.get('https://api.element14.com/catalog/products?versionNumber=1.2&term=id%3A1652963&storeInfo.id=uk.farnell.com&resultsSettings.offset=0&resultsSettings.numberOfResults=1&resultsSettings.refinements.filters=rohsCompliant%2CinStock&resultsSettings.responseGroup=large&callInfo.omitXmlSchema=false&callInfo.responseDataFormat=xml&callinfo.apiKey=rhcf7dupd8arzxtvqubksbbw')
+   #response = requests.get('https://api.element14.com/catalog/products?versionNumber=1.2&term=id%3A1652963&storeInfo.id=uk.farnell.com&resultsSettings.offset=0&resultsSettings.numberOfResults=1&resultsSettings.refinements.filters=rohsCompliant%2CinStock&resultsSettings.responseGroup=large&callInfo.omitXmlSchema=false&callInfo.responseDataFormat=xml&callinfo.apiKey=rhcf7dupd8arzxtvqubksbbw')
 
   
 
 
    
- #  with open(r"C:\Users\Chase\Desktop\Python Farnell Stock Check\response.xml", "w") as f:
-#    f.write(xml.etree.ElementTree.fromstring(string_xml))
- #   f.close
-   parser.parse(r'C:\Users\Chase\Desktop\Python Farnell Stock Check\farnell.xml')
+   #with open(r"C:\Users\callende\Desktop\Python stock check\Python-Farnell-Stock-Check\response.xml", "w") as f:
+   # f.write(response.text)
+   # f.close
+   parser.parse(r'C:\Users\callende\Desktop\Python stock check\Python-Farnell-Stock-Check\farnell.xml')
+ #  parser.parse(r'C:\Users\callende\Desktop\Python stock check\Python-Farnell-Stock-Check\response.xml')
  #  parser.parse(xml.etree.ElementTree.dump(tree))
- #  parser.parse(poo)
- #  print(r.text)
- #  print("MPN")
+ 
    print("MPN",Handler.sku)
    print("stock",Handler.instock[0])
    print("location",Handler.region[0])
